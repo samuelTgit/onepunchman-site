@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from datetime import datetime
 
 
@@ -10,6 +10,12 @@ def home():
     return render_template('index.html.jinja')
 
 
-@app.route('/characters')
+@app.route('/characters', methods=['GET', 'POST'])
 def characters():
-    return render_template('characters.html')
+    characterName = ''
+    heroClass= ''
+    if request.method=='POST':
+        characterName = request.form.get('name')
+        heroClass = request.form.get('heroclass')
+    return render_template('characters.html', characterName=characterName,
+    heroClass=heroClass)

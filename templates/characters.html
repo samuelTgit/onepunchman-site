@@ -1,5 +1,35 @@
-{% extends 'base.html'%}
+{% extends 'base.html'%} {% block content %}
 
-{% block content %}
 <p>This is the characters page</p>
+
+<h1>Characters</h1>
+
+
+{% if characterName %}
+<p>Your character name: {{characterName}}</p>
+<p>your character class: {{heroClass}}</p>
+{% endif %}
+
+
+
+<h2>Tell me about your favorite character</h2>
+
+<form action="{{url_for('characters')}}" method="post">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+    </div> 
+    <div>
+        <label for="heroclass">Hero Class</label>
+        <select name="heroclass" id="heroclass">
+            <option value="S">Class S</option>
+            <option value="A">Class A</option>
+            <option value="B">Class B</option>
+            <option value="C">Class C</option>
+            <option value="D">Class F</option>
+        </select>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
 {%endblock%}
