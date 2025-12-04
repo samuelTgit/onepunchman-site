@@ -1,0 +1,6 @@
+<h1>Stored Hero Submissions</h1>
+<ul>
+  {% for hero in heroes %}
+    <li>{{ hero.name }} – {{ hero.hero_class }} ({{ hero.timestamp.strftime('%Y-%m-%d') }})</li>
+  {% endfor %}
+</ul>
